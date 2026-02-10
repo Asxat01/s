@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Прощальное письмо</title>
+
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: 'Segoe UI', sans-serif;
+    }
+
+    body {
+        height: 100vh;
+        overflow: hidden;
+        background: linear-gradient(-45deg, #ff4e8a, #ff9a9e, #fad0c4, #fbc2eb);
+        background-size: 400% 400%;
+        animation: gradientBG 12s ease infinite;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        color: white;
+        position: relative;
+    }
+
+    @keyframes gradientBG {
+        0% { background-position: 0% 50%; }
+        50% { background-position: 100% 50%; }
+        100% { background-position: 0% 50%; }
+    }
+
+    /* Текстовый блок поверх фото */
+    .message-box {
+        position: relative;
+        z-index: 10; /* текст выше фото */
+        width: 90%;
+        max-width: 800px;
+        padding: 35px;
+        border-radius: 25px;
+        background: rgba(255, 255, 255, 0.15);
+        backdrop-filter: blur(15px);
+        box-shadow: 0 20px 50px rgba(0,0,0,0.25);
+        text-align: center;
+        animation: fadeIn 2.5s ease forwards;
+        opacity: 0;
+    }
+
+    @keyframes fadeIn {
+        to { opacity: 1; transform: translateY(0); }
+        from { opacity: 0; transform: translateY(40px); }
+    }
+
+    .message-box h1 {
+        font-size: 36px;
+        margin-bottom: 20px;
+        animation: glow 2s ease-in-out infinite alternate;
+    }
+
+    @keyframes glow {
+        from { text-shadow: 0 0 10px #fff; }
+        to { text-shadow: 0 0 25px #ffb6d5; }
+    }
+
+    .message-box p {
+        font-size: 17px;
+        line-height: 1.7;
+    }
+
+    /* Летающие фото за текстом */
+    .floating {
+        position: absolute;
+        width: 120px;
+        height: 120px;
+        object-fit: cover;
+        border-radius: 20px;
+        box-shadow: 0 15px 35px rgba(0,0,0,0.3);
+        animation: float 12s ease-in-out infinite;
+        z-index: 1; /* ниже текста */
+    }
+
+    /* Позиции и задержки фото */
+    .img1 { top: 5%; left: 5%; animation-delay: 0s; }
+    .img2 { bottom: 10%; right: 10%; animation-delay: 2s; }
+    .img3 { top: 60%; left: 5%; animation-delay: 4s; }
+    .img4 { top: 15%; right: 30%; animation-delay: 6s; }
+    .img5 { bottom: 25%; left: 50%; animation-delay: 8s; }
+
+    @keyframes float {
+        0% { transform: translateY(0px) rotate(0deg) scale(1); }
+        25% { transform: translate(30px, -20px) rotate(3deg) scale(1.05); }
+        50% { transform: translate(-20px, -40px) rotate(-3deg) scale(1); }
+        75% { transform: translate(20px, -20px) rotate(2deg) scale(1.05); }
+        100% { transform: translateY(0px) rotate(0deg) scale(1); }
+    }
+
+    /* Сердечки */
+    .heart {
+        position: absolute;
+        color: rgba(255,255,255,0.8);
+        font-size: 20px;
+        animation: fall linear infinite;
+        z-index: 0; /* ниже всего */
+    }
+
+    @keyframes fall {
+        from { transform: translateY(-10vh) scale(1); opacity: 1; }
+        to { transform: translateY(110vh) scale(1.5); opacity: 0; }
+    }
+
+    /* Музыкальный плеер */
+    .music-player {
+        position: fixed;
+        bottom: 20px;
+        right: 20px;
+        background: rgba(0,0,0,0.4);
+        padding: 10px 15px;
+        border-radius: 15px;
+        backdrop-filter: blur(10px);
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        box-shadow: 0 5px 20px rgba(0,0,0,0.3);
+        z-index: 10;
+    }
+
+    .music-player button {
+        border: none;
+        background: #ff4e8a;
+        color: white;
+        font-size: 20px;
+        padding: 8px 12px;
+        border-radius: 10px;
+        cursor: pointer;
+        transition: 0.3s;
+    }
+
+    .music-player button:hover { background: #ff6aa2; }
+
+    /* Адаптив */
+    @media (max-width: 768px) {
+        .message-box h1 { font-size: 28px; }
+        .message-box p { font-size: 16px; }
+        .floating { width: 90px; height: 90px; }
+        .music-player button { font-size: 18px; }
+    }
+
+    @media (max-width: 480px) {
+        .message-box { padding: 25px; }
+        .message-box h1 { font-size: 24px; }
+        .message-box p { font-size: 14px; }
+        .floating { width: 70px; height: 70px; }
+        .music-player button { font-size: 16px; padding: 6px 10px; }
+    }
+
+</style>
+</head>
+
+<body>
+
+<div class="message-box">
+    <h1>💖</h1>
+    <p>
+        Анеля апай сізге бізбен бірге болған уақытыңыз, қолдауыңыз және көмегіңіз үшін үлкен рақмет айтамын.<br>
+        Еңбегіңіздің жемісін көріп, тек биіктерден көріне беріңіз! ✨
+    </p>
+</div>
+
+<!-- 5 фото -->
+<img src="https://files.catbox.moe/bigsz5.jpeg" class="floating img1" alt="Фото 1">
+<img src="https://files.catbox.moe/4x06j7.jpeg" class="floating img2" alt="Фото 2">
+<img src="https://files.catbox.moe/ao5dqq.jpeg" class="floating img3" alt="Фото 3">
+<img src="https://files.catbox.moe/1jmfie.jpeg" class="floating img4" alt="Фото 4">
+<img src="https://files.catbox.moe/xxmez3.jpeg" class="floating img5" alt="Фото 5">
+
+<!-- Сердечки -->
+<script>
+function createHeart() {
+    const heart = document.createElement("div");
+    heart.classList.add("heart");
+    heart.innerHTML = "💖";
+    heart.style.left = Math.random() * 100 + "vw";
+    heart.style.animationDuration = (Math.random() * 5 + 5) + "s";
+    heart.style.fontSize = (Math.random() * 15 + 15) + "px";
+    document.body.appendChild(heart);
+    setTimeout(() => heart.remove(), 10000);
+}
+setInterval(createHeart, 300);
+</script>
+
+<!-- Музыкальный плеер -->
+<div class="music-player">
+    <audio id="bgMusic" src="https://files.catbox.moe/44ldlv.mp3" loop></audio>
+    <button id="musicBtn">🔊</button>
+</div>
+
+<script>
+const music = document.getElementById("bgMusic");
+const btn = document.getElementById("musicBtn");
+let playing = false;
+
+btn.addEventListener("click", () => {
+    if(!playing){
+        music.play();
+        btn.textContent = "🔇";
+        playing = true;
+    } else {
+        music.pause();
+        btn.textContent = "🔊";
+        playing = false;
+    }
+});
+</script>
+
+</body>
+</html>
